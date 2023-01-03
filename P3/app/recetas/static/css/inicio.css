@@ -1,0 +1,181 @@
+#p3 {
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(77, 157, 232);
+}
+
+.dark #p3 {
+    color: rgb(255, 255, 255);
+}
+
+
+.firstThing{
+    margin-top: 40px;
+    text-align: center;
+}
+
+.text-center{
+    text-align: center;
+    margin-top: 20%;
+}
+
+#add-button-tittle{
+    margin-top:5%
+}
+
+.add-button{
+    margin-top: 1%;
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgb(107, 173, 236);
+    background-image: linear-gradient(to top left,
+                                        rgba(0, 0, 0, 0.066),
+                                        rgba(0, 0, 0, 0.103) 30%,
+                                        rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+                inset -2px -2px 3px rgba(0, 0, 0, .6);
+}    
+
+.text-link{
+    color: #fff;
+    text-decoration: none;
+}
+
+.text-link-log{
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+.dark .text-link-log{
+    color: white;
+    text-decoration: none;
+}
+
+.recipe-names{
+    margin: 25px;
+    font-size: 25px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.iniciarSesion {
+    margin-right: 1%;
+    margin-left: 1%;
+}
+
+
+.login-button{
+    border: 2;
+    border-radius: 5px;
+    line-height: 2.5;
+    width: 145px;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    text-shadow: 0px 0px 0px #000;
+    background-color: rgba(205, 189, 244, 0.614);
+    background-image: linear-gradient(to top left,
+                                        rgba(0, 0, 0, 0.063),
+                                        rgba(0, 0, 0, 0.051) 30%,
+                                        rgba(0, 0, 0, 0));
+
+}    
+
+
+#botonSearch{
+    color: black;
+    border-color: black;
+    outline-color: #000;
+}
+
+.textoAlCentro{
+    text-align: center;
+}
+
+.textoAlCentroBottom{
+    text-align: center;
+}
+
+.textoAlCentroVerde{
+    text-align: center;
+    background-color: #dfd;
+    color: black;
+}
+
+
+
+#preparacion {
+    margin-top: 40px;
+    margin-left: 160px;
+    margin-right: 160px;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+#fotografia{
+    margin-top:40px;
+    margin-bottom: 40px;
+    
+}
+
+
+#filaNombre {
+    text-align: center;
+}
+
+.editar-eliminar-botones{
+    text-align: center;
+    margin-bottom: 90px;
+}
+
+.editar-boton{
+    border: 2;
+    border-color: gray;
+    border-radius: 10px;
+}
+
+#eliminar-boton{
+    border: 5;
+    border-color: gray;
+}
+
+.user-session {
+    width: 145px;
+    line-height: 20%;
+}
+
+.user-close-session{
+    color: black;
+    margin:0;
+}
+
+.user-name{
+    margin:0;
+}
+
+.close-session-button{
+    border: 2;
+    border-radius: 5px;
+    line-height: 1.5;
+    width: 145px;
+    padding: 0 20px;
+    font-size: 0.9rem;
+    text-align: center;
+    text-shadow: 0px 0px 0px #000;
+    background-color: rgba(205, 189, 244, 0.614);
+    background-image: linear-gradient(to top left,
+                                        rgba(0, 0, 0, 0.063),
+                                        rgba(0, 0, 0, 0.051) 30%,
+                                        rgba(0, 0, 0, 0));
+
+}   
+
+
+.dark #recipeList {
+    color: white;
+}

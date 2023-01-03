@@ -1,0 +1,39 @@
+{%extends "base.html"%}
+{% load static %}
+
+{%block contenido%}
+    
+    <link rel="stylesheet" href="{% static 'css/listaRecetas.css' %}">
+    <link rel="stylesheet" href="{% static 'css/inicio.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dark.css' %}">
+
+
+
+    <div id="recipeList">
+        {% for element in filtrados %}
+            <div class="recipe-names">
+                <a href="{% url 'detalle' element.id %}" class="text-link-log">{{element.nombre}}</a>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="textoAlCentroVerde">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    
+    {% if user.is_superuser %}
+
+        <div class="text-center">
+            <button type="button" class="add-button" >
+                <a href="{% url 'post_new' %}" class="text-link">Añadir receta</a>
+            </button>
+        </div>
+
+    {%endif%}
+    
+{%endblock%}

@@ -1,0 +1,35 @@
+#switch {
+    width: 50px;
+    font-size: 30px;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+.dark{
+    background: rgb(39, 39, 66);
+}
+
+.dark h8 {
+    color: white;
+}
+
+.dark #p3 {
+    color: white;
+}
+
+.dark .container {
+    color: rgb(232, 219, 219);
+}
+.dark #switch {
+    color: rgb(237, 169, 44);
+}
+
+.dark .navbar-brand {
+    color: rgb(255, 255, 255);
+
+}
+
+body.dark .navbar.navbar-expand-lg.bg-light{
+    background: rgb(101, 101, 119) !important;
+}
+

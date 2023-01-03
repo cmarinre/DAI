@@ -1,0 +1,83 @@
+{%extends "base.html"%}
+{%block contenido%}
+
+    {% load static %} 
+
+    <link rel="stylesheet" href="{% static 'css/detalle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/inicio.css' %}">
+
+
+        <h1 id="filaNombre">
+            {{ unareceta.nombre}}
+        </h1>
+
+
+        <div class="textoAlCentroVerde">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+
+
+        <div class="textoAlCentro">
+            <div id="preparacion">
+                {{ unareceta.preparación}}
+            </div>
+
+            <h4 id="filaNombre">Ingredientes</h4>
+
+
+            {% for ingrediente in ingredientes %}
+                <p>{{ingrediente.nombre}}</>
+            {% endfor %}
+
+
+            <div>
+                <img class="img-fluid" id="fotografia" src="/{{unareceta.foto}}" width="700" height="700">
+            </div>
+        </div>
+
+
+
+        <div class="editar-eliminar-botones">
+            {% if user.is_authenticated %}
+                <button type="button" class="editar-boton" >
+                    <a class="btn btn-default" href="{% url 'post_edit' pk=unareceta.pk %}">Editar receta</a>
+                </button>
+            {%endif%}
+
+            {% if user.is_superuser%}
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="eliminar-boton">
+                    Eliminar receta
+                </button>
+            {%endif%}
+        </div>
+            
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirmación</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                ¿Estás seguro de que quieres eliminar la receta?
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <a class="btn btn-default" href="{% url 'post_delete' pk=unareceta.pk %}"><span class="glyphicon glyphicon-pencil">Eliminar receta</span></a>
+
+                </div>
+            </div>
+            </div>
+        </div>
+    
+
+
+{%endblock%}

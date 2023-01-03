@@ -1,0 +1,129 @@
+GET http://localhost:5000/api/recipes HTTP/1.1
+Content-Type: application/json
+
+
+###
+
+PUT http://localhost:5000/api/recipes/5f7b4b5b8165eba7eac164c8 HTTP/1.1
+Content-Type: application/json
+
+{
+    "garnish": "4 pepper balls"
+}
+
+###
+
+PUT http://localhost:5000/api/recipes/5f7b4b5b8165eba7eac164c8 HTTP/1.1
+Content-Type: application/json
+
+{
+    "garnish": "4 pepper balls",
+    "slug": "manhattaaannn"
+}
+
+###
+
+POST http://localhost:5000/api/recipes HTTP/1.1
+Content-Type: application/json
+
+{
+    "name" : "mojito de ron",
+    "ingredients": [{"name":"ron","quantity":{"value":20,"unit":"ml"}}, {"name":"sprite","quantity":{"value":10,"unit":"ml"}}],
+    "garnish": "4 coffee beans",
+    "instructions": ["Sirve el ron", "Echa el sprite", "remuevelo"],
+    "slug": "mojito-ron"
+}
+
+###
+
+PUT http://localhost:5000/api/recipes/5f7daa1a8ec9dfb536781b0e HTTP/1.1
+Content-Type: application/json
+
+{
+    "instructions": ["Pour all ingredients in ajhgf mixing tin over ice, stir, and strain into shot glass. Then pour a little bit of love"]
+}
+
+###
+
+DELETE http://localhost:5000/api/recipes/5f7daa018ec9dfb536781afa HTTP/1.1
+Content-Type: application/json
+
+{}
+
+###
+
+
+POST http://localhost:5000/api/recipes HTTP/1.1
+Content-Type: application/json
+
+{
+    "name" : "cocktel de ginebra",
+    "ingredients": [{"name":"ginebra","quantity":{"value":20,"unit":"ml"}}, {"name":"sprite","quantity":{"value":10,"unit":"ml"}}],
+    "garnish": "3 coffee beans",
+    "instructions": ["Sirve la ginebra", "Echa el sprite", "remuevelo"],
+    "slug": "cocktel-ginebra"
+}
+
+
+###
+
+
+PUT http://localhost:5000/api_restful_2/5f7daa078ec9dfb536781aff HTTP/1.1
+Content-Type: application/json
+
+{
+    "garnish": "4 pepper balls"
+}
+
+###
+
+PUT http://localhost:5000/api_restful_2/5f7daa068ec9dfb536781afe HTTP/1.1
+Content-Type: application/json
+
+{
+    "garnish": "3 pepper balls",
+    "slug": "manhattaaannn"
+}
+
+###
+
+POST http://localhost:5000/api/recipes HTTP/1.1
+Content-Type: application/json
+
+{
+    "name" : "mojito de ron",
+    "ingredients": [{"name":"ron","quantity":{"value":20,"unit":"ml"}}, {"name":"sprite","quantity":{"value":10,"unit":"ml"}}],
+    "garnish": "3 coffee beans",
+    "instructions": ["Sirve el ron", "Echa el sprite", "remuevelo"],
+    "slug": "mojito-ron"
+}
+
+###
+
+PUT http://localhost:5000/api/recipes/5f7daa1a8ec9dfb536781b0e HTTP/1.1
+Content-Type: application/json
+
+{
+    "instructions": ["Pour all ingredients in aaaaaaaaa mixing tin over ice, stir, and strain into shot glass. Then pour a little bit of love"]
+}
+
+###
+
+DELETE http://localhost:5000/api/recipes/5f7daa158ec9dfb536781b0a HTTP/1.1
+Content-Type: application/json
+
+{}
+
+###
+
+
+POST http://localhost:5000/api/recipes HTTP/1.1
+Content-Type: application/json
+
+{
+    "name" : "cocktel de ginebra",
+    "ingredients": [{"name":"ginebra","quantity":{"value":20,"unit":"ml"}}, {"name":"sprite","quantity":{"value":10,"unit":"ml"}}],
+    "garnish": "3 coffee beans",
+    "instructions": ["Sirve la ginebra", "Echa el sprite", "remuevelo"],
+    "slug": "cocktel-ginebra"
+}

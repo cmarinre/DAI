@@ -1,0 +1,18 @@
+{%extends "base.html"%}
+{%block contenido%}
+{% load static %} 
+
+<link rel="stylesheet" href="{% static 'css/post_new.css' %}">
+<link rel="stylesheet" href="{% static 'css/inicio.css' %}">
+
+
+<div class="new-recipe">
+    <h2 id="alCentro">Nueva receta</h2>
+    <form id="alCentro" method="POST" class="form-receta" enctype="multipart/form-data">{% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Guardar receta</button>
+    </form>
+</div>
+
+
+{%endblock%}

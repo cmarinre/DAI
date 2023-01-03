@@ -1,0 +1,26 @@
+{%extends "base.html"%}
+{%block contenido%}
+    {% load static %} 
+
+    <link rel="stylesheet" href="{% static 'css/inicio.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dark.css' %}">
+    <div class="firstThing">
+        <h3>Bienvenido a la página web de la práctica 3 de DAI</h3>
+
+        {% if user.is_superuser %}    
+            <h5 id="add-button-tittle">Si desea añadir una receta pulse el siguiente botón</h5>
+        
+            <button type="button" class="add-button" >
+                <a href="{% url 'post_new' %}" class="text-link">Añadir receta</a>
+            </button>
+        {% endif %}
+    </div>
+    
+
+
+    
+
+
+
+{%endblock%}
