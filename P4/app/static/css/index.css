@@ -1,0 +1,35 @@
+.cuerpo{
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 1%
+}
+
+#barraNavegacion{
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+#p3{
+    font-size: 30px;
+}
+
+.letter-name{
+    font-size: 20px;
+}
+
+.letter-bottom{
+    font-size: 14px;
+    color: gray;
+}
+
+#name-detail{
+    font-size: 25px;
+}
+
+#margin-top{
+    margin-top: 5%;
+}
+
+.ing-div{
+    margin-left: 7%;
+}

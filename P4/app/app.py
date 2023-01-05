@@ -69,7 +69,6 @@ def mongo():
 
     lista_recetas = []
     for  receta in recetas:
-        app.logger.debug(receta)  # salida consola
         lista_recetas.append(receta)
 
     response = {
@@ -94,7 +93,6 @@ def mongo2(cadena):
 
     lista_recetas = []
     for  receta in recetas:
-        app.logger.debug(receta)  # salida consola
         lista_recetas.append(receta)
 
     response = {
@@ -118,7 +116,6 @@ def mongo3(cadena):
 
     lista_recetas = []
     for  receta in recetas:
-        app.logger.debug(receta)  # salida consola
         lista_recetas.append(receta)
 
     response = {
@@ -143,7 +140,6 @@ def mongo4(n):
 
     lista_recetas = []
     for  receta in recetas:
-        app.logger.debug(receta)  # salida consola
         lista_recetas.append(receta)
 
     response = {
@@ -165,50 +161,30 @@ def mongo4(n):
 
 
 # para devolver una lista (GET), o añadir (POST)
-@app.route('/api/recipes', methods=['GET', 'POST'])
+@app.route('/api/recipes/', methods=['GET', 'POST'])
 def api_1():
     if request.method == 'GET':
-        lista = []
         buscados = db.recipes.find().sort('name')
-        for recipe in buscados:
-            app.logger.debug(recipe)     # salida consola
-            recipe['_id'] = str(recipe['_id']) # casting a string (es un ObjectId)
-            lista.append(recipe)
-        response = {
-            'len': len(lista),
-            'data': lista
-        }
-        resJson = dumps(response)
-        return Response(resJson, mimetype='application/json')
+        return Response(dumps(buscados), mimetype='application/json')
 
     elif request.method == 'POST':
         
         request_data = request.get_json()
-       
         db.recipes.insert_one(request_data)
-
-        nuevo_dato = db.recipes.find_one({'_id':ObjectId(request_data['_id'])})
-
-        resJson = dumps(nuevo_dato)
-        return Response(resJson, mimetype='application/json')
+        nuevo_dato = db.recipes.find_one({}, request_data)
+        return Response(dumps(nuevo_dato), mimetype='application/json')
 
 
 
 
 # para devolver una, modificar o borrar
-@app.route('/api/recipes/<id>', methods=['GET', 'PUT', 'DELETE'])
+@app.route('/api/recipes/<id>/', methods=['GET', 'PUT', 'DELETE'])
 def api_2(id):
     if request.method == 'GET':
 
-        buscado = db.recipes.find_one({'_id':ObjectId(id)})
+        buscado = db.recipes.find_one({'_id': id})
         if buscado:
-            buscado['_id'] = str(buscado['_id']) # casting a string (es un ObjectId)
-            response = {
-                'len': len(buscado),
-                'data': buscado
-            }
-            resJson = dumps(response)
-            return Response(resJson, mimetype='application/json')
+            return Response(dumps(buscado), mimetype='application/json')
 
         else:
             return jsonify({'error':'Not found'}), 404
@@ -218,29 +194,11 @@ def api_2(id):
 
         buscado = db.recipes.find_one({'_id':ObjectId(id)})
         if buscado:
-
             request_data = request.get_json()
 
-            if 'name' in request_data:
-                buscado['name'] = request_data['name']
-            if 'ingredients' in request_data:
-                buscado['ingredients'] = request_data['ingredients']
-            if 'garnish' in request_data:
-                buscado['garnish'] = request_data['garnish']
-            if 'instructions' in request_data:
-                buscado['instructions'] = request_data['instructions']
-            if 'slug' in request_data:
-                buscado['slug'] = request_data['slug']
-            
-            db.recipes.replace_one({'_id': ObjectId(id)}, buscado)
+            db.recipes.update_one({'_id': ObjectId(id)}, {'$set': request_data})
             modificado = db.recipes.find_one({'_id':ObjectId(id)})
-
-            response = {
-                'len': len(modificado),
-                'data': modificado
-            }
-            resJson = dumps(response)
-            return Response(resJson, mimetype='application/json')
+            return Response(dumps(modificado), mimetype='application/json')
         else:
 
             return jsonify({'error':'Not found'}), 404
@@ -249,7 +207,7 @@ def api_2(id):
         buscado = db.recipes.find_one({'_id':ObjectId(id)})
         if buscado:
             db.recipes.delete_one({'_id': ObjectId(id)})
-            return id
+            return Response(dumps(id), mimetype='application/json')
         else:
             return jsonify({'error':'Not found'}), 404
 
@@ -262,7 +220,6 @@ class api_restful_1(Resource):
         lista = []
         buscados = db.recipes.find().sort('name')
         for recipe in buscados:
-            app.logger.debug(recipe)     # salida consola
             recipe['_id'] = str(recipe['_id']) # casting a string (es un ObjectId)
             lista.append(recipe)
         response = {
