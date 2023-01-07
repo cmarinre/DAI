@@ -33,3 +33,43 @@
 .ing-div{
     margin-left: 7%;
 }
+
+.center{
+    margin:auto;
+}
+
+#navbarSupportedContent{
+    margin-right: 3%;
+}
+
+.dark{
+    background-color: rgb(68, 63, 87);
+}
+
+.dark #tabla{
+    color: whitesmoke;
+}
+
+.dark #nombreFila{
+    color: whitesmoke;
+}
+
+.size{
+    font-size: 23px;
+}
+
+.size #nombreFila{
+    font-size: 23px;
+}
+
+.size #editButton{
+    font-size: 23px;
+}
+
+.size #deleteButton{
+    font-size: 23px;
+}
+
+.size #anadir-receta{
+    font-size: 23px;
+}

@@ -182,7 +182,7 @@ def api_1():
 def api_2(id):
     if request.method == 'GET':
 
-        buscado = db.recipes.find_one({'_id': id})
+        buscado = db.recipes.find_one({'_id': ObjectId(id)})
         if buscado:
             return Response(dumps(buscado), mimetype='application/json')
 
@@ -195,12 +195,10 @@ def api_2(id):
         buscado = db.recipes.find_one({'_id':ObjectId(id)})
         if buscado:
             request_data = request.get_json()
-
             db.recipes.update_one({'_id': ObjectId(id)}, {'$set': request_data})
             modificado = db.recipes.find_one({'_id':ObjectId(id)})
             return Response(dumps(modificado), mimetype='application/json')
         else:
-
             return jsonify({'error':'Not found'}), 404
 
     elif request.method == 'DELETE':
