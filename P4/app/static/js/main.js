@@ -66,10 +66,10 @@ fetch('/api/recipes/')           // GET por defecto,
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="titleModal"></h5>
+                                        <h5 class="modal-title" id="titleModal1"></h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <div class="modal-body" id="bodyModal">
+                                    <div class="modal-body" id="bodyModal1">
                                         
                                     </div>
                                 </div>
@@ -101,15 +101,15 @@ fetch('/api/recipes/')           // GET por defecto,
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirmación</h1>
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirmation</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        ¿Estás seguro de que quieres eliminar la receta?
+                                        Are you sure you want to delete the recipe?
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="eliminarReceta()">Eliminar</button>
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="eliminarReceta()">Delete</button>
                                     </div>
                                 </div>
                             </div>
@@ -219,9 +219,7 @@ function anadirRecetaEditada(identif){
 
     //Obtenemos el name que viene en el formulario, comprobando si existe
 
-
     var name = formData.get("nameInputEdit");
-
     //Y lo guardamos en el object final
     total["name"] = name;
 
@@ -229,9 +227,11 @@ function anadirRecetaEditada(identif){
     var instrucciones = [];
     var cadena = formData.get("instructionsInputEdit");
     var array = cadena.split("\n");
-    
+
     array.forEach(function(instr){
-        instrucciones.push(instr);
+        if(instr != ""){
+            instrucciones.push(instr);
+        }
     })
     
     total["instructions"] = instrucciones;
@@ -243,7 +243,9 @@ function anadirRecetaEditada(identif){
     
     array.forEach(function(comp, index){
         //Y los guardamos en el formato necesario
-        componentes[index] = {"name": comp};
+        if(comp != ""){ //para que no nos guarde instrucciones vacias
+            componentes[index] = {"name": comp};
+        }
     })
 
     total["ingredients"] = componentes;
@@ -256,7 +258,7 @@ function anadirRecetaEditada(identif){
         },
         body: JSON.stringify(total)
     });
-    location.reload();
+    window.location.reload();
 
 }
 
@@ -276,7 +278,6 @@ function detalle(ident) {  // saca un modal con la información de cada coctel
       let html_str_title  = `
           <p id="name-detail">${nombre}</p>
       `
-  
       html_str_body = `
           <p class="letter-name">Ingredients</p>
           <div class="ing-div">
@@ -298,8 +299,8 @@ function detalle(ident) {  // saca un modal con la información de cada coctel
           `
       })
   
-      document.getElementById('titleModal').innerHTML=html_str_title  
-      document.getElementById('bodyModal').innerHTML=html_str_body  
+      document.getElementById('titleModal1').innerHTML=html_str_title  
+      document.getElementById('bodyModal1').innerHTML=html_str_body  
   
   }
     
@@ -314,10 +315,18 @@ function buscarReceta(){
     var formData = new FormData(document.getElementById("searchForm"));
     var busqueda = formData.get("searchInput");
 
+    html_str_busqueda_body =''
+    fetch('/recetas_de/' + busqueda)
+    .then(res => res.json())                    // respuesta en json, otra promise
+    .then(filas => {                            // arrow function
+        filas.forEach(fila => {                 // bucle ES6, arrow function
+            var nombre=fila.name;
+            html_str_busqueda_body += `
+                    <p>${nombre}</p>`        // ES6 templates
+        });
+        document.getElementById('bodySearchModal').innerHTML=html_str_busqueda_body;
+    })
 }
-
-
-
 
 //___________________________________________________
 //------------ FUNCION AÑADIR RECETA ----------------
@@ -346,6 +355,7 @@ function anadirReceta(){
         var cadena = formData.get("instructionsInput");
         var array = cadena.split("\n");
         
+
         array.forEach(function(instr){
             instrucciones.push(instr);
         })

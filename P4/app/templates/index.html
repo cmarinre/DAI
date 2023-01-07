@@ -20,20 +20,34 @@
                 <i class="fas fa-moon" id="moon"></i>
                 <i class="fas fa-text-height" id="text"></i>
             </div>
-            
         </div>
 
 
           
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            </ul>
-            <form class="d-flex" role="search" method="get" id="searchForm">
-              <input class="form-control me-2" type="search" placeholder="Búsqueda" aria-label="Search" name="searchInput">
-              <button class="btn btn-outline-success" type="submit" id="botonSearch" onclick="buscarReceta()">Search</button>
-            </form>
-          </div>
-        </div>
+
+        <form class="d-flex" role="search" method="get" id="searchForm">
+            <input class="form-control me-2" type="search" placeholder="Búsqueda" aria-label="Search" name="searchInput">
+            <button class="btn btn-outline-success" type="button" id="botonSearch" data-bs-toggle="modal" data-bs-target="#busquedaModal" onclick="buscarReceta()">Search</button>
+            <div class="modal" tabindex="-1" role="dialog" id="busquedaModal">
+                <div class="modal-dialog" >
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Search</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="bodySearchModal">
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </form>
 
     </nav>
 

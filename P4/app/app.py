@@ -85,7 +85,7 @@ def mongo():
 
 
 
-@app.route('/recetas_de/<string:cadena>')
+@app.route('/recetas_de/<string:cadena>/')
 def mongo2(cadena):
 
     recetas = db.recipes.find( { "name": { "$regex": cadena, "$options": 'i' } } ) # devuelve un cursor(*), no una lista ni un iterador
@@ -95,13 +95,8 @@ def mongo2(cadena):
     for  receta in recetas:
         lista_recetas.append(receta)
 
-    response = {
-        'len': len(lista_recetas),
-        'data': lista_recetas
-    }
-
     # Convertimos los resultados a formato JSON
-    resJson = dumps(response)
+    resJson = dumps(lista_recetas)
 
     # Devolver en JSON al cliente cambiando la cabecera http para especificar que es un json
     return Response(resJson, mimetype='application/json')
